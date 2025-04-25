@@ -3,6 +3,7 @@
 ## Preparando ambiente para execução dos testes
 
 1. Verifique se os pacotes **pytest**, **pytest-testdox** e/ou **pytest-django** estão instalados globalmente em seu sistema:
+
 ```shell
 pip list
 ```
@@ -14,6 +15,7 @@ pip uninstall pytest pytest-testdox pytest-django -y
 ```
 
 3. Após isso, crie seu ambiente virtual:
+
 ```shell
 python -m venv venv
 ```
@@ -36,31 +38,36 @@ source venv/Scripts/activate
 ```shell
 pip install -r requirements.txt
 ```
-**IMPORTANTE**: As bibliotecas inicialmente listadas requirements.txt só dizem respeito aos testes, para a execução da sua aplicação você deve atualizá-lo adicionando todos os pacotes necessários.
 
+**IMPORTANTE**: As bibliotecas inicialmente listadas requirements.txt só dizem respeito aos testes, para a execução da sua aplicação você deve atualizá-lo adicionando todos os pacotes necessários.
 
 ## Execução dos testes:
 
 Como este projeto se trata de uma refatoração, não terá divisão de testes por tarefa, pois o objetivo é que todos os testes continuem passando após a refatoração.
 Deste modo, para rodar a bateria de todos os testes, utilize:
+
 ```shell
 pytest --testdox -vvs
 ```
+
 ---
 
 Caso você tenha interesse em rodar apenas um diretório de testes específico, utilize os comandos abaixo:
 
 Accounts:
+
 ```python
 pytest --testdox -vvs tests/accounts/
 ```
 
 Contents:
+
 ```python
 pytest --testdox -vvs tests/contents/
 ```
 
 Courses:
+
 ```python
 pytest --testdox -vvs tests/courses/
 ```
@@ -77,4 +84,30 @@ pytest --testdox -vvs caminho/para/o/arquivo/de/teste::NomeDaClasse::nome_do_met
 
 ```shell
 pytest --testdox -vvs tests/accounts/tests_views.py::TestAccountView::test_login_without_required_fields
+```
+
+### Exectue os testes
+
+```
+TEST=TEST ./manage.py runserver
+```
+
+### Subir os conteineres
+
+```
+docker-compose up
+```
+
+### Descer os conteineres
+
+```
+docker-compose down
+
+```
+
+### Debugando com ipbd
+
+```
+docker attach <container_web_id>
+
 ```
